@@ -6,7 +6,7 @@ class CellTest < Test::Unit::TestCase
 
 	def test_add_adjacent_bomb
 		#given a free cell
-		cell = Cell.new(:FREE)
+		cell = Cell.new(0,0,:FREE)
 
 		#when a bomb is placed
 		cell.add_adjacent_bomb()	
@@ -18,14 +18,14 @@ class CellTest < Test::Unit::TestCase
 
 	def test_add_illegal_number_of_bombs
 		#given a free cell
-		cell = Cell.new(:FREE)		
+		cell = Cell.new(0,0,:FREE)		
 
 		#add 9 adjacent bombs to raise an error
 		assert_raise(RangeError) { 9.times { cell.add_adjacent_bomb() } } 
 	end
 
 	def test_toggle_flag
-		cell = Cell.new(:BOMB)
+		cell = Cell.new(0,0,:BOMB)
 
 		cell.toggle_flag()
 
@@ -34,7 +34,7 @@ class CellTest < Test::Unit::TestCase
 
 	def test_toogle_flag_many_times
 
-		cell = Cell.new(:BOMB)
+		cell = Cell.new(0,0,:BOMB)
 
 		4.times{ cell.toggle_flag() }
 
@@ -42,14 +42,14 @@ class CellTest < Test::Unit::TestCase
 	end
 
 	def test_toogle_flag_invisible_cell
-		cell = Cell.new(:BOMB)
+		cell = Cell.new(0,0,:BOMB)
 		cell.make_visible()
 		
 		assert_raise(ArgumentError) {cell.toggle_flag}				
 	end
 
 	def test_make_visible
-		cell = Cell.new(:FREE)
+		cell = Cell.new(0,0,:FREE)
 		assert_equal(false, cell.visible?)
 
 		cell.make_visible()
@@ -58,7 +58,7 @@ class CellTest < Test::Unit::TestCase
 	end
 
 	def test_make_visible_flagged_cell
-		cell = Cell.new(:FREE)
+		cell = Cell.new(0,0,:FREE)
 		cell.toggle_flag()
 
 		assert_raise(ArgumentError) {cell.make_visible()}

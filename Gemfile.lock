@@ -1,0 +1,20 @@
+PATH
+  remote: .
+  specs:
+    Minesweeper Game (1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    metaclass (0.0.4)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
+    rake (12.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  Minesweeper Game!
+  mocha
+  rake (>= 11.1)
